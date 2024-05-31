@@ -15,7 +15,7 @@
   "contributes": {
     "commands": [
       {
-        "command": "exercisepreview.Show Exercise",
+        "command": "exercisepreview.showexercise",
         "title": "Show Exercise"
       }
     ]
