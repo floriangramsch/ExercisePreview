@@ -25,9 +25,9 @@
     ],
     "keybindings": [
       {
-          "command": "floxtension.showCommandMenu",
-          "key": "alt+,",
-          "mac": "shift+cmd+f"
+        "command": "floxtension.showCommandMenu",
+        "key": "alt+,",
+        "mac": "shift+cmd+f"
       }
     ]
   },
