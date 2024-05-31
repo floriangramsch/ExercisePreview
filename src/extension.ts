@@ -6,7 +6,7 @@ let nextPdfUri: vscode.Uri | undefined;
 export function activate(context: vscode.ExtensionContext) {
   const test = vscode.Uri;
   let showPdfCommand = vscode.commands.registerCommand(
-    "exercisepreview.showexercise",
+    "floxtension.showexercise",
     async () => {
       nextPdfUri = await showPdf(nextPdfUri);
     }
@@ -20,11 +20,11 @@ export function activate(context: vscode.ExtensionContext) {
   // });
 
   let showCommandMenu = vscode.commands.registerCommand(
-    "exercisepreview.showCommandMenu",
+    "floxtension.showCommandMenu",
     function () {
       vscode.window
         .showQuickPick([
-          { label: "Show Exercise", command: "exercisepreview.showexercise" },
+          { label: "Show Exercise", command: "floxtension.showexercise" },
           { label: "Befehl 2", command: "extension.command2" },
         ])
         .then((selection) => {

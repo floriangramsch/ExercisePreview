@@ -1,8 +1,8 @@
 {
-  "name": "exercisepreview",
-  "displayName": "ExercisePreview",
-  "description": "Shows the nearest pdf",
-  "version": "0.0.2",
+  "name": "floxtension",
+  "displayName": "FloxTension",
+  "description": "A library of things by Florian Gramsch",
+  "version": "0.1.1",
   "publisher": "floxstein",
   "engines": {
     "vscode": "^1.89.0"
@@ -15,17 +15,17 @@
   "contributes": {
     "commands": [
       {
-        "command": "exercisepreview.showexercise",
+        "command": "floxtension.showexercise",
         "title": "Show Exercise"
       },
       {
-        "command": "exercisepreview.showCommandMenu",
+        "command": "floxtension.showCommandMenu",
         "title": "Show Commands"
       }
     ],
     "keybindings": [
       {
-          "command": "exercisepreview.showCommandMenu",
+          "command": "floxtension.showCommandMenu",
           "key": "alt+,",
           "mac": "shift+cmd+f"
       }
