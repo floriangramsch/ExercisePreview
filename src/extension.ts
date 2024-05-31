@@ -1,13 +1,55 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import showPdf from "./showPdf";
+
+let nextPdfUri: vscode.Uri | undefined;
 
 export function activate(context: vscode.ExtensionContext) {
-	let disposable = vscode.commands.registerCommand('exercisepreview.showexercise', () => {
-		vscode.window.showInformationMessage('Hello World from ExercisePreview!');
-	});
+  const test = vscode.Uri;
+  let showPdfCommand = vscode.commands.registerCommand(
+    "exercisepreview.showexercise",
+    async () => {
+      nextPdfUri = await showPdf(nextPdfUri);
+    }
+  );
 
-	context.subscriptions.push(disposable);
+  // vscode.window.onDidChangeActiveTextEditor(async (editor) => {
+  //     if (editor) {
+  //         vscode.window.showInformationMessage(nextPdfUri?.toString());
+  //         const test = editor;
+  //     }
+  // });
+
+  let showCommandMenu = vscode.commands.registerCommand(
+    "exercisepreview.showCommandMenu",
+    function () {
+      vscode.window
+        .showQuickPick([
+          { label: "Show Exercise", command: "exercisepreview.showexercise" },
+          { label: "Befehl 2", command: "extension.command2" },
+        ])
+        .then((selection) => {
+          if (selection) {
+            if (selection.label === "Befehl 2") {
+              vscode.window
+                .showQuickPick([
+                  { label: "test1", command: "ahh" },
+                  { label: "test2", command: "ahh" },
+                  { label: "test3", command: "ahh" },
+                ])
+                .then((selection2) => {
+                  if (selection2) {
+                    vscode.window.showInformationMessage(selection2.label);
+                  }
+                });
+            }
+            vscode.commands.executeCommand(selection.command);
+          }
+        });
+    }
+  );
+
+  context.subscriptions.push(showPdfCommand);
+  context.subscriptions.push(showCommandMenu);
 }
 
 export function deactivate() {}
