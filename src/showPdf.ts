@@ -24,6 +24,8 @@ const showPdf = async (nextPdfUri: vscode.Uri | undefined) => {
   if (vscode.window.activeTextEditor) {
     nextPdfUri = findPdf();
 
+    // await vscode.ViewColumn.Two;
+    
     await vscode.commands.executeCommand("workbench.action.splitEditorRight");
     await vscode.commands.executeCommand("vscode.open", nextPdfUri);
     await vscode.commands.executeCommand(

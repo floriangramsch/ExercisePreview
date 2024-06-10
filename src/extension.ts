@@ -48,7 +48,7 @@ export function activate(context: vscode.ExtensionContext) {
       message += groupInfo;
     });
 
-    vscode.window.showInformationMessage(message);
+    // vscode.window.showInformationMessage(message);
   });
 
   let showCommandMenu = vscode.commands.registerCommand(
