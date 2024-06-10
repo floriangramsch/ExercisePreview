@@ -3,8 +3,8 @@ import * as fs from "fs";
 import * as path from "path";
 
 const findPdf = () => {
-  const currentFile = vscode.window.activeTextEditor.document.fileName;
-  const currentDir = path.dirname(currentFile);
+  const currentFile = vscode.window.activeTextEditor?.document.fileName;
+  const currentDir = path.dirname(currentFile ?? '');
 
   const pdfFiles = fs
     .readdirSync(currentDir)
@@ -14,7 +14,7 @@ const findPdf = () => {
   if (!pdfFiles.length) {
     vscode.window.showInformationMessage("No PDF files found");
   }
-  const currentIndex = pdfFiles.indexOf(path.basename(currentFile));
+  const currentIndex = pdfFiles.indexOf(path.basename(currentFile ?? ''));
   const nextIndex = (currentIndex + 1) % pdfFiles.length;
   const nextPdf = path.join(currentDir, pdfFiles[nextIndex]);
   return vscode.Uri.file(nextPdf);
@@ -38,7 +38,7 @@ const showPdf = async (nextPdfUri: vscode.Uri | undefined) => {
     const nextPdfUriString = nextPdfUri.toString();
     await vscode.commands.executeCommand(
       "workbench.action.closeActiveEditor",
-      nextPdfUri
+      nextPdfUri?.toString()
     );
   }
 
