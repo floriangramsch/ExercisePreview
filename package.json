@@ -2,7 +2,7 @@
   "name": "floxtension",
   "displayName": "FloxTension",
   "description": "A library of things by Florian Gramsch",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "floxstein",
   "engines": {
     "vscode": "^1.89.0"
